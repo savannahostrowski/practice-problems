@@ -1,4 +1,4 @@
-var word1 = "lionoil"
+var word1 = "lionoil";
 
 function palindrome(word) {
     charlist = word.split('');
@@ -26,16 +26,12 @@ function palindromeAlt(word) {
 
 function palindromeAlt2(word){
     length = word.length;
-    start = 0;
-    end = length - 1
-    for (var i = 0; i < charlist.length; i++){
-        console.log(word.charAt(i));
-        console.log(word.charAt(length-i));
-        if (word.charAt(i) !== word.charAt(length - i)){
+    for (var i = 0; i < length; i++){
+        if (word[i] !== word[length - 1 - i]){
             return false;
         }
-        else {
-            return true;
-        }
     }
+    return true;
+}
 
+console.log(palindromeAlt2(word1));
