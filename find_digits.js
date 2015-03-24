@@ -1,4 +1,4 @@
-function findDigits (n){
+function findDigits (n) {
 	num_divide = 0;
 	number_to_str = String(n);
 	for (var i = 0; i < number_to_str.length; i++){
