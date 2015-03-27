@@ -8,7 +8,6 @@ function canItBeAPalindrome (str){
     } else {
       counter[sortedArr[i]] += 1;
     }
-
    }
   for (var key in counter){
     console.log(counter[key]);
@@ -24,8 +23,6 @@ function canItBeAPalindrome (str){
     return "NO";
   }
 }
-
-console.log(canItBeAPalindrome('hannahss'))
 
 
  
