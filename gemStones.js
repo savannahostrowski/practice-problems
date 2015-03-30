@@ -1,37 +1,40 @@
-function gemStones(composition){
-// 	each rock has a composition of elements associated
-// 	to it - if an element occurs in two or more rocks
-// 	it is considered to be a gem element. determine the 
-// 	number of gem-elements common in these rocks
-  sortedComps = [];
+function gemStones(composition) {
+  var sortedComps = [];
+  var uniques = [];
+  var elements = [];
+  var gemElems = 0;
   // sort compositions
-  for (var i = 0; i < composition.length; i++){
+  for (var i = 0; i < composition.length; i++) {
       toArray = composition[i].split('');
       sort = toArray.sort();
       sortedComps.push(sort);
   }
-  for (var i = 0; i < sortedComps.length; i++){
-    str = sortedComps[i];
-    console.log(str);
-    for (var j = 0; j < str.length; j++){
-      if (str[j] === str [j + 1]){
-        str.splice(j, 1);
+  //get uniques
+  for (var i = 0; i < sortedComps.length; i++) {
+      lst = [];
+      str = sortedComps[i];
+      for (var j = 0; j < str.length; j++) {
+          if (str[j] != str[j + 1]) {
+              lst.push(str[j]);
+          }
       }
-    }
+      uniques.push(lst);
   }
-  return sortedComps;
+
+  var merged = [];
+  merged = merged.concat.apply(merged, uniques);
+  var elements = uniques.pop();
+
+  for (var i = 0; i < elements.length; i++) {
+      var count = 0;
+      for (var j = 0; j < merged.length; j++) {
+          if (elements[i] === merged[j]) {
+              count += 1;
+          }
+      }
+      if (count === sortedComps.length) {
+          gemElems += 1;
+      }
+  }
+  return gemElems;
 }
-
-
-
-console.log(gemStones(['aaccdeeeeeee', 'eedscc', 'ddddrdsey']));
-
-//     str = sortedComps[i];
-//     for (var j = 0; j < str.length; i++){
-//        if (sortedComps[i] == sortedComps[i + 1]){
-//         str.splice(j, 1);
-//     }
-//   }
-// }
-// return sortedComps;
-// }
