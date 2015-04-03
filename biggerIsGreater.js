@@ -1,29 +1,31 @@
 function biggerIsGreater (w){
 	newWord = [];
-	count = 0;
+	count = 0
 	dict = {};
 	alphabet = 'abcdefghijklmnopqrstuvwxyz';
 	for (var j = 0; j < alphabet.length; j++){
-		dict[alphabet[j]] = count;
-		count += 1;
+		dict[alphabet[j]] = j;
 	}
-	return dict;
 	for (var i = 0; i < w.length; i++){
-		if (dict.hasOwnProperty(w[i]) w[i + 1]){
-			newWord.append(w[i]);
-		}else{
+		if (dict[w[i]] < dict[w[i + 1]]){
 			newWord.push(w[i + 1]);
-		}		
+			newWord.push(w[i]);
+			i += 1;
+		} else {
+			newWord.push(w[i]);
+		}
 	}
-	if (newWord == w){
+	if (newWord.toString() === w){
 		return 'no answer';
 	} else {
 		return newWord;
-	};
+	}
 }
 
-console.log(biggerIsGreater('ba'));
+		
+
+console.log(biggerIsGreater('hefg'));
 
 
 
-
+ 
