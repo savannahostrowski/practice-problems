@@ -1,30 +1,28 @@
 function biggerIsGreater (w){
-	newWord = [];
-	count = 0
-	dict = {};
-	alphabet = 'abcdefghijklmnopqrstuvwxyz';
+	var newWord = [];
+	var dict = {};
+	var flag = true;
+	var alphabet = 'abcdefghijklmnopqrstuvwxyz';
 	for (var j = 0; j < alphabet.length; j++){
 		dict[alphabet[j]] = j;
 	}
-	for (var i = 0; i < w.length; i++){
-		if (dict[w[i]] < dict[w[i + 1]]){
-			newWord.push(w[i + 1]);
-			newWord.push(w[i]);
-			i += 1;
+	for (var i = w.length - 1; i >= 0; i--){
+		if (flag && dict[w[i]] > dict[w[i - 1]]){
+			newWord.unshift(w[i - 1]);
+			newWord.unshift(w[i]);
+			i -= 1;
+			flag = false;
 		} else {
-			newWord.push(w[i]);
+			newWord.unshift(w[i]);
 		}
 	}
-	if (newWord.toString() === w){
+	newWord = newWord.join('');
+	if (newWord === w){
 		return 'no answer';
 	} else {
 		return newWord;
 	}
 }
-
-		
-
-console.log(biggerIsGreater('hefg'));
 
 
 
