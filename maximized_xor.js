@@ -13,5 +13,3 @@ function maximizedXor(num1, num2) {
   }
   return maxSoFar;
 }
-
-console.log(maximizedXor(1, 1000));
