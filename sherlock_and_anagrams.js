@@ -2,10 +2,13 @@ function sherlockAndAnagrams (s) {
 	lstOfSubstr1 = [];
 	lstOfSubstr2 = [];
 	for (var i = 0; i <= s.length; i++) {
-		substr = s.substring(0, i);
-		if (substr.length >= 2){
+		for (var j = 0; j <=s.length; j++){
+			substr = s.substring(0, j);
+			if (substr.length >= 2) {
 			lstOfSubstr1.push(substr);
 		}
+	}
+		
 	}
 	for (var i = s.length; i >= 0; i--){
 		substr = s.substring(i, s.length);
