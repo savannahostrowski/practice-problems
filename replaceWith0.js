@@ -7,9 +7,9 @@ function replaceWith0(matrix) {
     var index = [];
     // gets row
     for (var i = 0; i < numRows; i++) {
+        var row = matrix[i];
         // gets element in row
         for (var j = 0; j < numCols; j++) {
-            var row = matrix[i];
             //if row element equals 0
             if (row[j] === 0) {
                 //map zeros to all elements in row
@@ -19,7 +19,6 @@ function replaceWith0(matrix) {
                 matrix[i]= newRow;
                 // adds the index to the index array
                 index.push(j);
-                break;
             }
         }
     }
