@@ -2,25 +2,36 @@ import requests, sched, time, smtplib
 
 s = sched.scheduler(time.time, time.sleep)
 site = 'http://www.ostrowski.ca'
+sender = 'savannahostrowski@gmail.com'
+receivers = 'savannahostrowski@gmail.com'
+msg = '\r \n'. join([ 'From: savannahostrowski@gmail.com',
+					  'To: savannahostrowski@gmail.com',
+					  'Subject: Site is Down!',
+					  '',
+					  'Site update: http://www.ostrowski.ca has yielded a status other than 200'
+					])
+username = 'savannahostrowski@gmail.com'
+password = '...'
+
+def emailMe():
+	try:
+		server = smtplib.SMTP('smtp.gmail.com:587')
+		print('server is setup')
+		server.ehlo()
+		server.starttls()
+		server.login(username, password)
+		server.sendmail(sender,receivers, msg)
+		server.quit()
+		print('Successfully sent email')
+	except smtplib.SMTPException:
+		print ('Error: unable to send email')
 
 def siteCheck(url, sc):
-	print(time.time())
 	r = requests.head(url)
-	if r.status_code == 200:
+	if r.status_code != 200:
 		print(r.status_code)
-		emailTextMe()
-	sc.enter(10,1, siteCheck, (sc,))
+		emailMe()
+	sc.enter(5,1, siteCheck, (url, sc,))
 
-s.enter(10,1,siteCheck, (s,))
+s.enter(5,1,siteCheck, (site,s,))
 s.run()
-
-def emailTextMe():
-	server = smtplib.SMTP('stmp.gmail.com', 587)
-	server.starttls()
-	server.login('email', 'password')
-	msg = 'Site update: http://www.ostrowski.ca has yielded\
-		   a status other than 200'
-	server.sendmail('email',
-	 				'email', msg)
-	server.sendmail('???', '5199981350@msg.telus.com', msg)
-	server.quit()
