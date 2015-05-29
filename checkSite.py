@@ -31,7 +31,7 @@ def siteCheck(url, sc):
 	if r.status_code != 200:
 		print(r.status_code)
 		emailMe()
-	sc.enter(5,1, siteCheck, (url, sc,))
+	sc.enter(3600,1, siteCheck, (url, sc,))
 
-s.enter(5,1,siteCheck, (site,s,))
+s.enter(3600,1,siteCheck, (site,s,))
 s.run()
