@@ -28,7 +28,7 @@ function missingNumbers(lst1, lst2){
       }
     }
   }
-  console.log(missing);
+  return missing.sort();
 }
 
 missingNumbers([1,2,2,3,4,5,5,5], [1,2,3,4,5]);
