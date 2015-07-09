@@ -8,11 +8,11 @@ function caesarCipher(str, k) {
       var newVal = charVal + k;
       newLetterList.push (newVal);
     }
-    
+  }
   for (var i = 0; i < newLetterList.length; i++) {
     var converted = newLetterList.charCodeAt(i);
     finalWord += converted;
   }
-}
+
 return finalWord;
 }
