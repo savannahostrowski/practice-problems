@@ -7,7 +7,7 @@ function sherlockAndArray (arr) {
         total += subArr[j];
       }
       if (total === str[i]) {
-        console.log('true');
+        return true;
       } else {
         total = 0;
       }
