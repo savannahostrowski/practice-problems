@@ -1,4 +1,3 @@
-;; A program written by Savannah Ostrowski
 ;; This program will put the remainder when you divide by y into
 ;; $3. Assume that you have an input from the front-end for the value
 ;; of $2 as x and the quadratic equation y=8x^2-x+5
